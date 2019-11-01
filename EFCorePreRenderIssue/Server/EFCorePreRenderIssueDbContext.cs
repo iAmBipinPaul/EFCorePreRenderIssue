@@ -45,8 +45,14 @@ namespace EFCorePreRenderIssue.Server
                 .HasForeignKey(p => p.UnitId);
 
 
-           
-        
+            builder.Entity<Unit>().HasData(
+    new Unit() { Id=1,Name="Kg"}, new Unit() { Id = 2, Name = "Ltr" });
+
+            builder.Entity<Product>().HasData(
+   new Product() { Id = 1, Name = "Milk" ,UnitId=2}, new Product() { Id = 2, Name = "Rice",UnitId=1 });
+
+
+
 
 
         }
