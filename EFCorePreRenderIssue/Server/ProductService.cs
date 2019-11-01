@@ -1,10 +1,8 @@
 ﻿using EFCorePreRenderIssue.Shared;
 using EFCorePreRenderIssue.Shared.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EFCorePreRenderIssue.Server
@@ -17,10 +15,10 @@ namespace EFCorePreRenderIssue.Server
         {
             _eFCorePreRenderIssueDbContext = eFCorePreRenderIssueDbContext;
         }
-        public Task<List<ProductDto>> GetAsync()
+        public async Task<List<ProductDto>> GetAsync()
         {
 
-            return _eFCorePreRenderIssueDbContext.Products.Select(p => new ProductDto
+            return await _eFCorePreRenderIssueDbContext.Products.Select(p => new ProductDto
             {
                 Id = p.Id,
                 Name = p.Name,

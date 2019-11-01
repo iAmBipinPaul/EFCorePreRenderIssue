@@ -15,11 +15,11 @@ namespace EFCorePreRenderIssue.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddEntityFrameworkSqlite();
+            services.AddEntityFrameworkSqlServer();
             
 
               services.AddDbContext<EFCorePreRenderIssueDbContext>(options =>
-            options.UseSqlite(@"Data Source = CustomerDB.db;"),
+            options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=efcoreissue;Trusted_Connection=True;MultipleActiveResultSets=true"),
            optionsLifetime:ServiceLifetime.Transient);
 
            

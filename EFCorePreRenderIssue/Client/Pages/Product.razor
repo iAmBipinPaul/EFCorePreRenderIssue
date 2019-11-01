@@ -1,0 +1,43 @@
+﻿@page "/product"
+@using EFCorePreRenderIssue.Shared.Interfaces
+@using EFCorePreRenderIssue.Shared
+@inject IProductService  ProductService
+<h1>Products</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th scope="col">Name</th>
+            <th scope="col">Unit</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in products)
+        {
+            <tr>
+
+                <td>@item.Name</td>
+                <td>@item.Unit.Name</td>
+
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+<hr />
+
+<Unit></Unit>
+@code {
+
+    List<ProductDto> products = new List<ProductDto>();
+    protected override async Task OnInitializedAsync()
+    {
+        products = await ProductService.GetAsync();
+
+    }
+}
